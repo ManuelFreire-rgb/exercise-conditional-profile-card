@@ -29,13 +29,24 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let cover1 = variables.name;
+  if (variables.name == null) cover1 = "Nombre";
+  let cover2 = variables.lastName;
+  if (variables.lastName == null) cover2 = "Apellido";
+  let cover3 = variables.role;
+  if (variables.role == null) cover3 = "cargo";
+  let cover4 = variables.city;
+  if (variables.city == null) cover4 = "Ciudad";
+  let cover5 = variables.country;
+  if (variables.country == null) cover5 = "Pais";
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>${variables.name} ${variables.lastName}</h1>
-          <h2>${variables.role}</h2>
-          <h3>${variables.city}, ${variables.country}</h3>
+          <h1>${cover1} ${cover2}</h1>
+            <h2>${cover3}</h2>
+          <h3>${cover4}, ${cover5}</h3>
           <ul class="${variables.socialMediaPosition}">
             <li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>
@@ -60,15 +71,15 @@ window.onload = function() {
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
-    twitter: "null",
+    twitter: null,
     github: null,
     linkedin: null,
     instagram: null,
-    name: "Name",
-    lastName: "Last Name",
-    role: "Role",
-    country: "Country",
-    city: "City"
+    name: null,
+    lastName: null,
+    role: null,
+    country: null,
+    city: null
   };
   render(window.variables); // render the card for the first time
 
